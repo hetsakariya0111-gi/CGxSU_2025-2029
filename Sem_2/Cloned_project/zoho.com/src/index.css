@@ -1,0 +1,197 @@
+@import "@fontsource/inter";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================
+   BASE
+====================== */
+
+@layer base {
+  * {
+    @apply box-border m-0 p-0;
+  }
+
+  html,
+  body {
+    @apply w-full overflow-x-hidden scroll-smooth;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    @apply text-gray-800 bg-gray-50;
+  }
+
+  a {
+    @apply no-underline text-inherit transition-colors duration-300;
+  }
+
+  ul {
+    @apply list-none;
+  }
+}
+
+/* ======================
+   LAYOUT
+====================== */
+
+@layer components {
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 md:px-6;
+  }
+
+  /* ======================
+     BUTTONS
+  ====================== */
+
+  .btn-primary {
+    @apply bg-red-500 text-white px-8 py-3 rounded font-bold hover:bg-red-600 transition;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-800 px-6 py-2 rounded text-sm hover:bg-gray-800 hover:text-white transition;
+  }
+
+  .btn-outline {
+    @apply border-2 border-blue-500 text-blue-500 px-6 py-3 rounded font-bold hover:bg-blue-500 hover:text-white transition;
+  }
+
+  /* ======================
+     NAVBAR
+  ====================== */
+
+  .navbar {
+    @apply bg-white py-4 shadow-sm sticky top-0 z-50;
+  }
+
+  .nav-container {
+    @apply flex justify-between items-center;
+  }
+
+  .nav-menu {
+    @apply flex gap-8;
+  }
+
+  .nav-menu a {
+    @apply font-medium hover:text-red-500;
+  }
+
+  .nav-right {
+    @apply flex items-center gap-5;
+  }
+
+  .btn-getstarted {
+    @apply bg-red-500 text-white px-4 py-2 rounded font-semibold hover:bg-red-600;
+  }
+
+  /* ======================
+     HERO
+  ====================== */
+
+  .hero {
+    @apply py-20 bg-gradient-to-r from-blue-100 to-blue-200;
+  }
+
+  .hero-grid {
+    @apply flex flex-col md:flex-row items-center gap-12;
+  }
+
+  .hero h1 {
+    @apply text-4xl md:text-5xl font-bold mb-5;
+  }
+
+  .hero p {
+    @apply text-lg text-gray-600 mb-6;
+  }
+
+  /* ======================
+     FEATURES
+  ====================== */
+
+  .features {
+    @apply py-20 bg-gray-100;
+  }
+
+  .features-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  .feature-card {
+    @apply bg-white p-8 rounded-xl shadow hover:shadow-lg transition text-center;
+  }
+
+  .feature-card img {
+    @apply w-20 h-20 mx-auto mb-4;
+  }
+
+  .feature-card h3 {
+    @apply text-xl font-semibold mb-2;
+  }
+
+  .feature-card p {
+    @apply text-gray-600 text-sm;
+  }
+
+  /* ======================
+     BRANDS
+  ====================== */
+
+  .brands {
+    @apply py-20 text-center;
+  }
+
+  .brands-grid {
+    @apply flex flex-wrap justify-center gap-8;
+  }
+
+  .brands-grid img {
+    @apply h-8 object-contain;
+  }
+
+  /* ======================
+     FOOTER
+  ====================== */
+
+  .footer {
+    @apply bg-gray-100 py-16 text-gray-600;
+  }
+
+  .footer-grid {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-8;
+  }
+
+  .footer-col h4 {
+    @apply font-bold mb-4 text-sm text-gray-800;
+  }
+
+  .footer-col ul {
+    @apply space-y-2;
+  }
+
+  .footer-col a {
+    @apply text-sm hover:text-red-500 transition;
+  }
+
+  .footer-bottom {
+    @apply border-t border-gray-300 pt-6 mt-10 text-center text-sm;
+  }
+
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+@media (max-width: 768px) {
+
+  .nav-menu {
+    @apply hidden;
+  }
+
+  .hero-grid {
+    @apply text-center;
+  }
+
+}
