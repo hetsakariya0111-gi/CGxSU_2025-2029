@@ -1,4 +1,5 @@
 import React from 'react';
+import profilePlaceholder from '../assets/profile-placeholder.svg';
 
 const AboutPage = () => {
   return (
@@ -18,7 +19,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="about-image">
-            <img src="/images/profile.jpg" alt="Het" />
+            <img src={profilePlaceholder} alt="Het" />
           </div>
         </div>
         

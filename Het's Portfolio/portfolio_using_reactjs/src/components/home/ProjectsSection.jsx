@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 // import { projects } from '../../data/projectsData.js';
 // import React from 'react';
@@ -36,76 +35,7 @@ const ProjectsSection = () => {
                 viewport={{ once: true }}
                 className="project-card"
               >
-                <div className="project-image">
-                  <div className="project-overlay">
-                    <div className="project-overlay-content">
-                      <div className="project-links">
-                        <a 
-                          href={project.github} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="project-link"
-                        >
-                          <FaGithub /> Code
-                        </a>
-                        <a 
-                          href={project.demo} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="project-link"
-                        >
-                          <FaExternalLinkAlt /> Live Demo
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="project-img"
-                  />
-                </div>
-
-                <div className="project-content">
-                  <div className="project-header">
-                    <h3 className="project-title">{project.title}</h3>
-                    {project.featured && (
-                      <span className="featured-badge">
-                        <FaStar /> Featured
-                      </span>
-                    )}
-                  </div>
-                  
-                  <p className="project-description">{project.description}</p>
-                  
-                  <div className="project-tech">
-                    {project.technologies.slice(0, 4).map((tech, idx) => (
-                      <span key={idx} className="tech-tag">{tech}</span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="tech-tag">+{project.technologies.length - 4}</span>
-                    )}
-                  </div>
-
-                  <div className="project-stats">
-                    {project.stats && (
-                      <>
-                        <span className="stat">
-                          <span className="stat-number">{project.stats.commits}+</span>
-                          <span className="stat-label">Commits</span>
-                        </span>
-                        <span className="stat">
-                          <span className="stat-number">{project.stats.stars}</span>
-                          <span className="stat-label">Stars</span>
-                        </span>
-                        <span className="stat">
-                          <span className="stat-number">{project.stats.contributors}</span>
-                          <span className="stat-label">Contributors</span>
-                        </span>
-                      </>
-                    )}
-                  </div>
-                </div>
+                <ProjectCard project={project} />
               </motion.div>
             ))}
           </div>

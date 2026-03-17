@@ -1,12 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (e) => {
+    // ignore clicks on interactive elements
+    if (e.target.closest('a,button')) return;
+    // go to projects page and focus this project
+    navigate(`/projects#project-${project.id}`);
+  };
+
   return (
     <motion.div
       whileHover={{ y: -10 }}
       className="project-card"
+      role="button"
+      tabIndex={0}
+      onClick={handleCardClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') handleCardClick(e);
+      }}
     >
       <div className="project-image">
         <img 
@@ -29,7 +45,7 @@ const ProjectCard = ({ project }) => {
                 <FaGithub /> Code
               </a>
               <a 
-                href={project.demo} 
+                href={project.demo || project.live} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="project-link"

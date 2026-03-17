@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import profilePlaceholder from "../../assets/profile-placeholder.svg";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -255,11 +256,7 @@ const Hero = () => {
                       <div className="dot dot-2"></div>
                       <div className="dot dot-3"></div>
                     </div>
-                    <img
-                      src="../assets/myphoto.jpeg"
-                      alt="Het"
-                      className="profile-photo"
-                    />
+                    <img src={profilePlaceholder} alt="Het" className="profile-photo" />
                   </div>
                 </div>
               </div>

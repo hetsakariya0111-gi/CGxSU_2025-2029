@@ -22,19 +22,9 @@ const ProjectsPage = () => {
         <div className="container">
           <div className="projects-grid">
             {projects.map((project) => (
-              // OPTION 1: જો ProjectCard individual props લે
-              <ProjectCard 
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                technologies={project.technologies}
-                github={project.github}
-                live={project.live}
-                image={project.image}
-              />
-              
-              // OPTION 2: જો ProjectCard single project prop લે
-              // <ProjectCard key={project.id} project={project} />
+              <div key={project.id} id={`project-${project.id}`}>
+                <ProjectCard project={project} />
+              </div>
             ))}
           </div>
         </div>

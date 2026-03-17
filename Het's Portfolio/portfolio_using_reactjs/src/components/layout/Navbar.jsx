@@ -9,7 +9,8 @@ const Navbar = () => {
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/projects', label: 'Projects' },
+    { path: '/#about', label: 'About' },
+    { path: '/#projects', label: 'Projects' },
     { path: '/contact', label: 'Contact' }
   ];
 
@@ -25,14 +26,10 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isOpen]);
 
-  // Close mobile menu when route changes
-  const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // ← આ ઉમેરો
-  
+  // Close mobile menu when route/hash changes
   useEffect(() => {
     setIsOpen(false);
-  }, [location]);
-};
+  }, [location.pathname, location.hash]);
 
   // Navbar scroll effect
   useEffect(() => {
@@ -69,7 +66,12 @@ const Navbar = () => {
             <li key={link.path}>
               <Link 
                 to={link.path}
-                className={location.pathname === link.path ? 'active' : ''}
+                className={
+                  location.pathname === link.path ||
+                  (link.path.startsWith('/#') && location.pathname === '/' && location.hash === link.path.slice(1))
+                    ? 'active'
+                    : ''
+                }
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
