@@ -5,14 +5,12 @@ import {
   FaLinkedin,
   FaTwitter,
   FaInstagram,
-  FaArrowDown,
   FaCode,
   FaLaptopCode,
   FaRocket,
 } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import profilePlaceholder from "../../assets/profile-placeholder.svg";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -127,7 +125,7 @@ const Hero = () => {
             className="hero-description"
           >
             I architect{" "}
-            <span class="highlight">performance-driven web solutions</span>
+            <span className="highlight">performance-driven web solutions</span>
             that transform complex challenges into elegant digital experiences.
             Where every line of code serves both function and form.
           </motion.p>
@@ -238,46 +236,7 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Hero Image Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="hero-image"
-        >
-          <div className="image-wrapper">
-            <div className="main-image">
-              <div className="placeholder-image">
-                <div className="image-content">
-                  <div className="profile-pic-placeholder">
-                    <div className="dots">
-                      <div className="dot dot-1"></div>
-                      <div className="dot dot-2"></div>
-                      <div className="dot dot-3"></div>
-                    </div>
-                    <img src={profilePlaceholder} alt="Het" className="profile-photo" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
-
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="scroll-down"
-        onClick={() =>
-          document
-            .getElementById("about")
-            ?.scrollIntoView({ behavior: "smooth" })
-        }
-      >
-        <FaArrowDown />
-      </motion.button>
     </section>
   );
 };
