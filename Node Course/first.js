@@ -5,4 +5,4 @@ fs.writeFile("output.txt","Writing file", (err)=>{
   else console.log("File Written Successfully");
 })
 
-console.log("Het");
+console.log("Het"); 
