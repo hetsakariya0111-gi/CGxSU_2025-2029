@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import profilePhoto from "../../assets/photo.png";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -19,12 +20,10 @@ const Hero = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = [
-    "Frontend Solutions Architect",
-    "Digital Experience Engineer",
-    "Creative Technologist",
-    "UI Engineering Specialist",
-    "Interactive Developer",
-    "Digital Product Engineer",
+    "MERN Stack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Full Stack Developer",
   ];
 
   useEffect(() => {
@@ -89,8 +88,9 @@ const Hero = () => {
       </div>
 
       <div className="container">
-        <div className="hero-content">
-          <motion.div
+        <div className="hero-container">
+          <div className="hero-content">
+            <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -235,6 +235,21 @@ const Hero = () => {
               </a>
             </div>
           </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="hero-image"
+          >
+            <div className="image-wrapper">
+              <div className="main-image placeholder-image">
+                <img src={profilePhoto} alt="Het Sakariya" className="profile-photo" />
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

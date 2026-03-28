@@ -1,5 +1,5 @@
 import React from 'react';
-import profilePlaceholder from '../assets/profile-placeholder.svg';
+import profilePlaceholder from '../assets/photo.png';
 
 const AboutPage = () => {
   return (
@@ -19,7 +19,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="about-image">
-            <img src={profilePlaceholder} alt="Het" />
+            <img src={profilePlaceholder} alt="Het" className="about-img" />
           </div>
         </div>
         

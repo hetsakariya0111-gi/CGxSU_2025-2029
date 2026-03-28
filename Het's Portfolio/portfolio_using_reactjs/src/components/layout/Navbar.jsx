@@ -45,6 +45,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isActive = (linkPath) => {
+    if (linkPath === '/') {
+      return location.pathname === '/' && !location.hash;
+    }
+    if (linkPath.startsWith('/#')) {
+      return location.pathname === '/' && location.hash === linkPath.slice(1);
+    }
+    return location.pathname === linkPath;
+  };
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
@@ -66,12 +76,7 @@ const Navbar = () => {
             <li key={link.path}>
               <Link 
                 to={link.path}
-                className={
-                  location.pathname === link.path ||
-                  (link.path.startsWith('/#') && location.pathname === '/' && location.hash === link.path.slice(1))
-                    ? 'active'
-                    : ''
-                }
+                className={isActive(link.path) ? 'active' : ''}
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
