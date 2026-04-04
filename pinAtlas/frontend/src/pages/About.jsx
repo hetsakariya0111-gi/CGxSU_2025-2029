@@ -188,12 +188,22 @@ const About = () => {
         <section>
           <Card className="p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-primary/25 bg-primary/[0.04]">
             <div>
-              <h2 className="text-xl font-bold text-text tracking-tight mb-2">Built by</h2>
-              <p className="text-sm text-textMuted max-w-md leading-relaxed">
-                Replace this card with your name, links, and live demo. The repo is structured so reviewers can
-                navigate backend and frontend quickly.
-              </p>
-            </div>
+  <h2 className="text-xl font-bold text-text tracking-tight mb-2">Built by</h2>
+  <p className="text-sm text-textMuted max-w-md leading-relaxed">
+    <span className="text-text font-semibold">HM Sakariya</span> — Full Stack Developer
+  </p>
+  <p className="text-sm text-textMuted mt-1">
+    CGxSU · Semester 2 · 2025–2029
+  </p>
+  
+    <a href="https://pinatleshetsakariya-05bw.onrender.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block mt-2 text-sm text-primary hover:underline"
+  >
+    🌐 Live Demo
+  </a>
+</div>
             <a
               href={GITHUB_HREF}
               target="_blank"
