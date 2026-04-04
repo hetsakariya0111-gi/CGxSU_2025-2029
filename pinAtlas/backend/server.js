@@ -10,7 +10,7 @@ const errorHandler = require('./src/middleware/errorHandler');
 const { buildMeta, errorEnvelope } = require('./src/middleware/asyncWrapper');
 
 const pincodeRoutes = require('./src/routes/pincode.routes');
-const statsRoutes = require('./src/routes/stats.routes');
+const statsRoutes = require('./src/routes/stats.routes');    
 
 connectDB();
 
