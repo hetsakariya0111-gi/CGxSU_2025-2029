@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 
-const GITHUB_HREF = 'https://github.com';
+const GITHUB_HREF = 'https://github.com/hetsakariya0111-gi/CGxSU_2025-2029/tree/main/pinAtlas';
 
 const TechCard = React.memo(function TechCardInner({ icon: Icon, title, description, badge }) {
   return (
