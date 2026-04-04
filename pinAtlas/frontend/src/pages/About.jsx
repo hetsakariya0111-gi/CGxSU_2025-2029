@@ -190,7 +190,7 @@ const About = () => {
             <div>
   <h2 className="text-xl font-bold text-text tracking-tight mb-2">Built by</h2>
   <p className="text-sm text-textMuted max-w-md leading-relaxed">
-    <span className="text-text font-semibold">HM Sakariya</span> — Full Stack Developer
+    <span className="text-text font-semibold">Het Sakariya</span> — Full Stack Developer
   </p>
   <p className="text-sm text-textMuted mt-1">
     CGxSU · Semester 2 · 2025–2029
