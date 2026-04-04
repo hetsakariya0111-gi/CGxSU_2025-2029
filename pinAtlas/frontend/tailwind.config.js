@@ -5,15 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: 'var(--bg)',
-        surface: 'var(--surface)',
-        border: 'var(--border)',
-        text: 'var(--text)',
-        textMuted: 'var(--textMuted)',
-        primary: '#3b82f6',
-        primaryDark: '#2563eb',
-        success: '#10b981',
-        danger: '#ef4444',
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        border: 'var(--color-border)',
+        text: 'var(--color-text)',
+        textMuted: 'var(--color-text-muted)',
+        primary: 'var(--color-primary)',
+        success: 'var(--color-success)',
+        danger: 'var(--color-danger)',
+        accentEmerald: '#10b981',
+        accentBlue: '#3b82f6',
+        accentRose: '#f43f5e',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

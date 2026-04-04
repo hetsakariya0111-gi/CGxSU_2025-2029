@@ -9,7 +9,7 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('pinAtlas-theme');
     if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'dark';
   });
 
   useEffect(() => {
@@ -33,4 +33,6 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
+// Context hook co-located with provider (standard React pattern).
+// eslint-disable-next-line react-refresh/only-export-components -- export useTheme alongside ThemeProvider
 export const useTheme = () => useContext(ThemeContext);

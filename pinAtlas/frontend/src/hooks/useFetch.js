@@ -9,24 +9,25 @@ export function useFetch(url, params = null) {
   const serialized = useMemo(() => JSON.stringify(params ?? null), [params]);
 
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
+    const requestParams = JSON.parse(serialized);
 
     const run = async () => {
       setLoading(true);
       setError(null);
       try {
         const res = await api.get(url, {
-          params: params ?? undefined,
+          params: requestParams ?? undefined,
+          signal: controller.signal,
         });
-        if (!cancelled) {
+        if (!controller.signal.aborted) {
           setData(res.data);
         }
       } catch (err) {
-        if (!cancelled) {
-          setError(err.response?.data?.message || err.message || 'Request failed');
-        }
+        if (controller.signal.aborted) return;
+        setError(err.response?.data?.message || err.message || 'Request failed');
       } finally {
-        if (!cancelled) {
+        if (!controller.signal.aborted) {
           setLoading(false);
         }
       }
@@ -34,9 +35,7 @@ export function useFetch(url, params = null) {
 
     run();
 
-    return () => {
-      cancelled = true;
-    };
+    return () => controller.abort();
   }, [url, serialized]);
 
   const refetch = async () => {

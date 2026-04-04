@@ -16,8 +16,40 @@ connectDB();
 
 const app = express();
 
+if (process.env.NODE_ENV === 'production' || process.env.TRUST_PROXY === '1') {
+  app.set('trust proxy', 1);
+}
+
+function parseClientOrigins() {
+  const raw = process.env.CLIENT_URL || '';
+  return raw
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function corsOrigin(origin, callback) {
+  if (!origin) return callback(null, true);
+  const allowed = parseClientOrigins();
+  if (allowed.length && allowed.includes(origin)) return callback(null, true);
+  const isDev = process.env.NODE_ENV !== 'production';
+  if (isDev) {
+    if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin)) {
+      return callback(null, true);
+    }
+    if (
+      /^https?:\/\/(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})(:\d+)?$/i.test(
+        origin
+      )
+    ) {
+      return callback(null, true);
+    }
+  }
+  return callback(null, false);
+}
+
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(cors({ origin: corsOrigin }));
 app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
