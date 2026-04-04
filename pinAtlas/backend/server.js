@@ -20,8 +20,13 @@ if (process.env.NODE_ENV === 'production' || process.env.TRUST_PROXY === '1') {
   app.set('trust proxy', 1);
 }
 
+/** Live static site on Render; CLIENT_URL env overrides or extends (comma-separated). */
+const PROD_CLIENT_FALLBACK = 'https://pin-atlas-het-sakariya-3ti8.onrender.com';
+
 function parseClientOrigins() {
-  const raw = process.env.CLIENT_URL || '';
+  const raw =
+    process.env.CLIENT_URL ||
+    (process.env.NODE_ENV === 'production' ? PROD_CLIENT_FALLBACK : '');
   return raw
     .split(',')
     .map((s) => s.trim())
@@ -31,7 +36,7 @@ function parseClientOrigins() {
 function corsOrigin(origin, callback) {
   if (!origin) return callback(null, true);
   const allowed = parseClientOrigins();
-  if (allowed.length && allowed.includes(origin)) return callback(null, true);
+  if (allowed.includes(origin)) return callback(null, true);
   const isDev = process.env.NODE_ENV !== 'production';
   if (isDev) {
     if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin)) {
@@ -44,6 +49,11 @@ function corsOrigin(origin, callback) {
     ) {
       return callback(null, true);
     }
+    return callback(null, false);
+  }
+  // Production: any Render static URL (previews + prod) + explicit CLIENT_URL / fallback list
+  if (/^https:\/\/[a-z0-9]([a-z0-9-]*[a-z0-9])?\.onrender\.com$/i.test(origin)) {
+    return callback(null, true);
   }
   return callback(null, false);
 }
@@ -53,6 +63,24 @@ app.use(cors({ origin: corsOrigin }));
 app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.json({
+    service: 'PinAtlas API',
+    status: 'running',
+    message: 'This is the REST API. Use /api/* routes from your frontend.',
+    endpoints: {
+      health: '/health',
+      stats: 'GET /api/stats',
+      pincodes: 'GET /api/pincodes',
+      search: 'GET /api/search?q=',
+    },
+  });
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ ok: true, uptime: Math.floor(process.uptime()) });
+});
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
