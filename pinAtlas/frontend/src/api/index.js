@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 /** Live API (Render); override with VITE_API_BASE_URL for other deploys. */
-const PROD_API_BASE = 'https://pinatlas-hetsakariya-xsnk.onrender.com/api'; 
+const PROD_API_BASE = 'https://pinatlas-hetsakariya-xsnk.onrender.com/api';
 
 function apiBaseURL() {
   if (import.meta.env.DEV) return '/api';
-  const fromEnv = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/$/, '');
-  return fromEnv || PROD_API_BASE;
+  return PROD_API_BASE;
 }
 
 const api = axios.create({
