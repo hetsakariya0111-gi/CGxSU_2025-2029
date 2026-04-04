@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-950 text-white font-sans;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(109, 78, 247, 0.2);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #a89ffd, #6d4ef7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, #6d4ef7, #ec4899);
+    box-shadow: 0 4px 24px rgba(109, 78, 247, 0.4);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 8px 32px rgba(109, 78, 247, 0.65);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    @apply relative inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-primary-400 border border-primary-500/40 transition-all duration-300;
+  }
+  .btn-outline:hover {
+    @apply border-primary-400 text-white;
+    background: rgba(109, 78, 247, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .section-title {
+    @apply text-4xl font-extrabold mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-dark-400 text-lg mb-12;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(109, 78, 247, 0.15);
+    border: 1px solid rgba(109, 78, 247, 0.3);
+    color: #a89ffd;
+  }
+}
+
+@layer utilities {
+  .glow {
+    box-shadow: 0 0 40px rgba(109, 78, 247, 0.3);
+  }
+  .glow-sm {
+    box-shadow: 0 0 20px rgba(109, 78, 247, 0.2);
+  }
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(109, 78, 247, 0.4);
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* Animated background blobs */
+.blob {
+  border-radius: 50%;
+  filter: blur(80px);
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.25;
+}

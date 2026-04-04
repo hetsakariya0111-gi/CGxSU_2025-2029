@@ -1,0 +1,446 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply w-full overflow-x-hidden scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans m-0 p-0;
+  }
+}
+
+@layer components {
+  /* Announcement Bar */
+  .announcement-bar {
+    @apply bg-loft-orange text-white flex items-center justify-center gap-4 py-3 px-4 text-sm flex-wrap;
+  }
+  
+  .announcement-bar a {
+    @apply text-white underline hover:no-underline transition-all;
+  }
+  
+  /* Navbar */
+  .navbar {
+    @apply absolute top-[60px] left-0 right-0 z-50 px-4 md:px-8 lg:px-16;
+  }
+  
+  .nav-container {
+    @apply flex justify-between items-center;
+  }
+  
+  .nav-logo {
+    @apply text-white text-3xl md:text-4xl font-bold no-underline;
+  }
+  
+  .nav-links {
+    @apply flex gap-6 md:gap-8 items-center;
+  }
+  
+  .nav-link {
+    @apply text-white text-sm md:text-base no-underline transition-all hover:text-loft-orange;
+  }
+  
+  .nav-link.active {
+    @apply text-loft-orange scale-110;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    @apply relative w-full h-screen overflow-hidden;
+  }
+  
+  .hero-video {
+    @apply absolute top-0 left-0 w-full h-full object-cover z-0;
+  }
+  
+  .hero-overlay {
+    @apply absolute inset-0 bg-black/30 z-10;
+  }
+  
+  .hero-content {
+    @apply relative z-20 flex flex-col items-center justify-center h-full text-white px-4;
+  }
+  
+  .hero-title {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-in;
+  }
+  
+  /* Technology Hero */
+  .tech-hero {
+    @apply relative bg-cover bg-center text-white py-32 px-4 md:px-8 lg:px-16 min-h-[400px] flex items-center;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://loftorbital.com/wp-content/uploads/tech-test-2-scaled.jpg');
+  }
+  
+  .tech-hero-content {
+    @apply max-w-2xl;
+  }
+  
+  .tech-hero-title {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold mb-4;
+  }
+  
+  .tech-hero-subtitle {
+    @apply text-xl md:text-2xl mb-8;
+  }
+  
+  .tech-hero-btn {
+    @apply bg-loft-orange text-white px-8 py-3 rounded-md font-bold inline-block hover:bg-opacity-90 transition-all;
+  }
+  
+  /* Center Section */
+  .center-section {
+    @apply flex flex-col md:flex-row justify-between items-center gap-8 px-4 md:px-8 lg:px-16 py-16;
+  }
+  
+  .center-left {
+    @apply flex-1;
+  }
+  
+  .center-left h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl text-loft-blue font-bold;
+  }
+  
+  .center-right {
+    @apply flex-1;
+  }
+  
+  .center-right p {
+    @apply text-gray-700 text-lg mb-6;
+  }
+  
+  .learn-more-link {
+    @apply text-loft-blue font-bold flex items-center gap-2 hover:gap-3 transition-all cursor-pointer;
+  }
+  
+  /* Mission Cards Grid */
+  .missions-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-8 lg:px-16 py-16;
+  }
+  
+  .mission-card {
+    @apply bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer;
+  }
+  
+  .mission-card img {
+    @apply w-full h-64 object-cover;
+  }
+  
+  .mission-card-content {
+    @apply p-6;
+  }
+  
+  .mission-card hr {
+    @apply border-2 border-loft-blue my-4;
+  }
+  
+  .mission-card h3 {
+    @apply text-2xl font-bold text-loft-blue flex justify-between items-center;
+  }
+  
+  .mission-card p {
+    @apply text-gray-600 mt-2;
+  }
+  
+  /* Customers Section */
+  .customers-section {
+    @apply text-center py-16 px-4;
+  }
+  
+  .customers-section h2 {
+    @apply text-4xl md:text-5xl text-loft-blue mb-12;
+  }
+  
+  .logo-cloud {
+    @apply flex flex-wrap justify-center items-center gap-8 md:gap-12 filter grayscale;
+  }
+  
+  .logo-cloud img {
+    @apply h-12 md:h-16 object-contain opacity-70 hover:opacity-100 hover:filter-none transition-all;
+  }
+  
+  /* News Section */
+  .news-section {
+    @apply py-16 px-4 md:px-8 lg:px-16;
+  }
+  
+  .news-section h2 {
+    @apply text-4xl md:text-5xl text-loft-blue text-center mb-12;
+  }
+  
+  .news-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  
+  .news-card {
+    @apply cursor-pointer;
+  }
+  
+  .news-card img {
+    @apply w-full h-64 object-cover rounded-xl transition-transform duration-300;
+  }
+  
+  .news-card:hover img {
+    @apply scale-105;
+  }
+  
+  .news-card h3 {
+    @apply text-xl font-bold text-loft-blue mt-4 transition-colors duration-300;
+  }
+  
+  .news-card:hover h3 {
+    @apply text-loft-orange;
+  }
+  
+  .view-all-news {
+    @apply bg-loft-orange text-white px-8 py-3 rounded-md font-bold w-fit mx-auto mt-12 hover:bg-opacity-90 transition-all cursor-pointer;
+  }
+  
+  /* Technology Page Specific */
+  .platform-section {
+    @apply bg-loft-gray py-20 px-4 md:px-8 lg:px-16 text-center;
+  }
+  
+  .platform-section h2 {
+    @apply text-4xl md:text-5xl text-loft-blue mb-12;
+  }
+  
+  .platform-nav {
+    @apply flex justify-center gap-8 md:gap-16 mb-12 flex-wrap;
+  }
+  
+  .platform-nav-item {
+    @apply text-loft-blue font-bold text-lg md:text-xl cursor-pointer relative;
+  }
+  
+  .platform-nav-item.active {
+    @apply text-loft-orange;
+  }
+  
+  .platform-nav-item.active::after {
+    @apply content-['›'] absolute -right-5 top-1/2 -translate-y-1/2 text-loft-orange;
+  }
+  
+  .video-container {
+    @apply relative w-full max-w-5xl mx-auto aspect-video bg-black rounded-xl overflow-hidden;
+  }
+  
+  .video-overlay-text {
+    @apply absolute inset-0 flex items-center justify-center text-white text-2xl md:text-4xl font-bold z-10;
+  }
+  
+  /* Core Technologies */
+  .core-tech-section {
+    @apply bg-loft-blue text-white py-20 px-4 md:px-8 lg:px-16;
+  }
+  
+  .core-tech-section h2 {
+    @apply text-4xl md:text-5xl text-center mb-16;
+  }
+  
+  .tech-block {
+    @apply flex flex-col lg:flex-row items-center gap-12 mb-20;
+  }
+  
+  .tech-block.reverse {
+    @apply lg:flex-row-reverse;
+  }
+  
+  .tech-content {
+    @apply flex-1;
+  }
+  
+  .tech-content h3 {
+    @apply text-3xl md:text-4xl mb-2;
+  }
+  
+  .tech-content h4 {
+    @apply text-xl text-gray-300 mb-6;
+  }
+  
+  .tech-content p {
+    @apply text-gray-300 leading-relaxed;
+  }
+  
+  .tech-media {
+    @apply flex-1 relative;
+  }
+  
+  .tech-media img {
+    @apply w-full rounded-xl;
+  }
+  
+  .play-button {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/80 w-16 h-16 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform;
+  }
+  
+  .play-button svg {
+    @apply w-8 h-8 text-loft-blue ml-1;
+  }
+  
+  /* Footer CTA */
+  .footer-cta {
+    @apply bg-orange-gradient text-white rounded-xl w-[90%] mx-auto py-8 px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-8 my-16;
+  }
+  
+  .footer-cta h3 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+  
+  .footer-cta p {
+    @apply text-lg;
+  }
+  
+  .footer-cta .talk-btn {
+    @apply bg-black text-white px-8 py-3 rounded-md font-bold hover:scale-105 transition-transform cursor-pointer;
+  }
+  
+  /* Main Footer */
+  .main-footer {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-8 lg:px-16 py-12;
+  }
+  
+  .footer-logo-section h2 {
+    @apply text-3xl font-bold text-loft-blue mb-4;
+  }
+  
+  .social-icons {
+    @apply flex gap-4 mt-4;
+  }
+  
+  .social-icon {
+    @apply w-6 h-6 text-loft-blue hover:text-loft-orange transition-colors;
+  }
+  
+  .footer-links h4 {
+    @apply font-bold text-loft-blue mb-4;
+  }
+  
+  .footer-links ul {
+    @apply space-y-2;
+  }
+  
+  .footer-links li {
+    @apply text-gray-600 hover:text-loft-orange cursor-pointer transition-colors;
+  }
+  
+  .footer-bottom {
+    @apply border-t border-gray-300 mt-8 pt-6 pb-8 px-4 md:px-8 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500;
+  }
+  
+  .footer-bottom-links {
+    @apply flex gap-6;
+  }
+  
+  /* Form Page */
+  .form-page {
+    @apply bg-loft-gray py-20 px-4 min-h-screen flex items-center justify-center;
+  }
+  
+  .form-container {
+    @apply bg-white max-w-4xl w-full rounded-xl shadow-xl p-8 md:p-12;
+  }
+  
+  .form-container h2 {
+    @apply text-3xl md:text-4xl text-loft-blue mb-8;
+  }
+  
+  .form-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .form-field {
+    @apply flex flex-col;
+  }
+  
+  .form-field.full-width {
+    @apply col-span-1 md:col-span-2 lg:col-span-3;
+  }
+  
+  .form-field label {
+    @apply font-bold text-loft-blue mb-2 text-sm;
+  }
+  
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    @apply border border-gray-300 rounded-md p-3 text-base focus:outline-none focus:border-loft-orange transition-colors;
+  }
+  
+  .form-field textarea {
+    @apply min-h-[150px] resize-y;
+  }
+  
+  .form-checkbox {
+    @apply flex items-start gap-3 col-span-1 md:col-span-2 lg:col-span-3 my-4;
+  }
+  
+  .form-checkbox input {
+    @apply mt-1;
+  }
+  
+  .form-checkbox a {
+    @apply text-loft-orange underline;
+  }
+  
+  .form-submit {
+    @apply bg-loft-orange text-white px-8 py-3 rounded-md font-bold w-fit hover:bg-opacity-90 transition-all col-span-1 md:col-span-2 lg:col-span-3;
+  }
+
+  /* Form field focus styles */
+input:focus, select:focus, textarea:focus {
+  @apply outline-none ring-2 ring-loft-orange ring-opacity-50;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  @apply w-4 h-4 text-loft-orange border-gray-300 rounded focus:ring-loft-orange;
+}
+
+/* Button hover */
+.bg-loft-orange {
+  @apply transition-all duration-300;
+}
+
+.bg-loft-orange:hover {
+  @apply bg-opacity-80 transform scale-105;
+}
+
+/* CTA section text */
+.footer-cta p {
+  @apply text-white text-opacity-90;
+}
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      @apply gap-4;
+    }
+    
+    .nav-link {
+      @apply text-xs;
+    }
+    
+    .hero-title {
+      @apply text-4xl;
+    }
+    
+    .tech-hero-title {
+      @apply text-4xl;
+    }
+    
+    .tech-hero-subtitle {
+      @apply text-lg;
+    }
+    
+    .platform-nav-item {
+      @apply text-base;
+    }
+    
+    .platform-nav-item.active::after {
+      @apply hidden;
+    }
+  }
+}
