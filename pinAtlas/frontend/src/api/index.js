@@ -12,7 +12,7 @@ function apiBaseURL() {
 const api = axios.create({
   baseURL: apiBaseURL(),
   timeout: 60_000,
-});
+});     
 
 function isLikelyNetworkFailure(error) {
   if (!error || error.response) return false;
