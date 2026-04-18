@@ -273,4 +273,4 @@ const deleteBulkNotes = async (req, res) => {
   }
 };
 
-module.exports = { createNote, createBulkNotes, getAllNotes, getNoteById, replaceNote, updateNote, deleteNote, deleteBulkNotes };
+module.exports = { createNote, createBulkNotes, getAllNotes, getNoteById, replaceNote, updateNote, deleteNote, deleteBulkNotes };    
