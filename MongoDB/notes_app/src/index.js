@@ -1,15 +1,16 @@
+require("dotenv").config();
 const app = require("./app");
 const connectDB = require("./config/db");
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-// Connect DB and then start server
-async function startServer() {
-    await connectDB();
-
+connectDB()
+  .then(() => {
     app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
-}
-
-startServer();
+  })
+  .catch((err) => {
+    console.error("Database connection failed:", err.message);
+    process.exit(1);
+  });
