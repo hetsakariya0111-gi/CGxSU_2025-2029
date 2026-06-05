@@ -1,0 +1,16 @@
+# My App Backend on Render
+services:
+  - type: web
+    name: my-app-mongodb
+    runtime: node
+    rootDir: MongoDB/my-app
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        # You'll need to set this in Render Dashboard (use MongoDB Atlas connection string)
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

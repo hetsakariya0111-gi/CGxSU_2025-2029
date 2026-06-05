@@ -1,0 +1,16 @@
+# Notes App Backend on Render
+services:
+  - type: web
+    name: notes-app
+    runtime: node
+    rootDir: MongoDB/notes_app
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        # You'll need to set this in Render Dashboard (use MongoDB Atlas connection string)
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
