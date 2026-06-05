@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "Notes App Assignment API",
+    "description": "Complete API documentation for notes-app-assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. CRUD Operations",
+      "item": [
+        {
+          "name": "Create Note",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Team Standup\",\n  \"content\": \"Discuss sprint blockers and deployment plan\",\n  \"category\": \"work\",\n  \"isPinned\": true\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/notes", "host": ["{{baseUrl}}"], "path": ["api", "notes"]}
+          }
+        },
+        {
+          "name": "Create Bulk Notes",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": [\n    { \"title\": \"Note 1\", \"content\": \"Content 1\", \"category\": \"work\" },\n    { \"title\": \"Note 2\", \"content\": \"Content 2\", \"category\": \"study\" },\n    { \"title\": \"Note 3\", \"content\": \"Content 3\", \"category\": \"personal\" }\n  ]\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/notes/bulk", "host": ["{{baseUrl}}"], "path": ["api", "notes", "bulk"]}
+          }
+        },
+        {
+          "name": "Get All Notes",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes", "host": ["{{baseUrl}}"], "path": ["api", "notes"]}
+          }
+        },
+        {
+          "name": "Get Note by ID",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/6660f4c1b0a69a001f3a5c8d", "host": ["{{baseUrl}}"], "path": ["api", "notes", "6660f4c1b0a69a001f3a5c8d"]}
+          }
+        },
+        {
+          "name": "Replace Note (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Title\",\n  \"content\": \"New Content\",\n  \"category\": \"study\",\n  \"isPinned\": false\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/notes/6660f4c1b0a69a001f3a5c8d", "host": ["{{baseUrl}}"], "path": ["api", "notes", "6660f4c1b0a69a001f3a5c8d"]}
+          }
+        },
+        {
+          "name": "Update Note (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isPinned\": true\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/notes/6660f4c1b0a69a001f3a5c8d", "host": ["{{baseUrl}}"], "path": ["api", "notes", "6660f4c1b0a69a001f3a5c8d"]}
+          }
+        },
+        {
+          "name": "Delete Single Note",
+          "request": {
+            "method": "DELETE",
+            "url": {"raw": "{{baseUrl}}/api/notes/6660f4c1b0a69a001f3a5c8d", "host": ["{{baseUrl}}"], "path": ["api", "notes", "6660f4c1b0a69a001f3a5c8d"]}
+          }
+        },
+        {
+          "name": "Delete Bulk Notes",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\"6660f4c1b0a69a001f3a5c8d\", \"6660f4c1b0a69a001f3a5c8e\"]\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/api/notes/bulk", "host": ["{{baseUrl}}"], "path": ["api", "notes", "bulk"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Search Operations",
+      "item": [
+        {
+          "name": "Search by Title",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/search?q=meeting", "host": ["{{baseUrl}}"], "path": ["api", "notes", "search"], "query": [{"key": "q", "value": "meeting"}]}
+          }
+        },
+        {
+          "name": "Search by Content",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/search/content?q=deployment", "host": ["{{baseUrl}}"], "path": ["api", "notes", "search", "content"], "query": [{"key": "q", "value": "deployment"}]}
+          }
+        },
+        {
+          "name": "Search All Fields",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/search/all?q=react", "host": ["{{baseUrl}}"], "path": ["api", "notes", "search", "all"], "query": [{"key": "q", "value": "react"}]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Two Concepts Combined",
+      "item": [
+        {
+          "name": "Filter + Sort",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/filter-sort?category=work&sortBy=title&order=asc", "host": ["{{baseUrl}}"], "path": ["api", "notes", "filter-sort"], "query": [{"key": "category", "value": "work"}, {"key": "sortBy", "value": "title"}, {"key": "order", "value": "asc"}]}
+          }
+        },
+        {
+          "name": "Filter + Pagination",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/filter-paginate?category=work&page=1&limit=3", "host": ["{{baseUrl}}"], "path": ["api", "notes", "filter-paginate"], "query": [{"key": "category", "value": "work"}, {"key": "page", "value": "1"}, {"key": "limit", "value": "3"}]}
+          }
+        },
+        {
+          "name": "Sort + Pagination",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/sort-paginate?sortBy=title&order=asc&page=1&limit=5", "host": ["{{baseUrl}}"], "path": ["api", "notes", "sort-paginate"], "query": [{"key": "sortBy", "value": "title"}, {"key": "order", "value": "asc"}, {"key": "page", "value": "1"}, {"key": "limit", "value": "5"}]}
+          }
+        },
+        {
+          "name": "Search + Filter",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/search-filter?q=meeting&category=work", "host": ["{{baseUrl}}"], "path": ["api", "notes", "search-filter"], "query": [{"key": "q", "value": "meeting"}, {"key": "category", "value": "work"}]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Three Concepts Combined",
+      "item": [
+        {
+          "name": "Search + Sort + Pagination",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/search-sort-paginate?q=node&sortBy=title&order=asc&page=1&limit=5", "host": ["{{baseUrl}}"], "path": ["api", "notes", "search-sort-paginate"], "query": [{"key": "q", "value": "node"}, {"key": "sortBy", "value": "title"}, {"key": "order", "value": "asc"}, {"key": "page", "value": "1"}, {"key": "limit", "value": "5"}]}
+          }
+        },
+        {
+          "name": "Filter + Sort + Pagination",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/filter-sort-paginate?category=work&isPinned=true&sortBy=title&order=asc&page=1&limit=3", "host": ["{{baseUrl}}"], "path": ["api", "notes", "filter-sort-paginate"], "query": [{"key": "category", "value": "work"}, {"key": "isPinned", "value": "true"}, {"key": "sortBy", "value": "title"}, {"key": "order", "value": "asc"}, {"key": "page", "value": "1"}, {"key": "limit", "value": "3"}]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Master Query (All-in-One)",
+      "item": [
+        {
+          "name": "Master Query",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "{{baseUrl}}/api/notes/query?q=meeting&category=work&isPinned=true&sortBy=title&order=asc&page=1&limit=3", "host": ["{{baseUrl}}"], "path": ["api", "notes", "query"], "query": [{"key": "q", "value": "meeting"}, {"key": "category", "value": "work"}, {"key": "isPinned", "value": "true"}, {"key": "sortBy", "value": "title"}, {"key": "order", "value": "asc"}, {"key": "page", "value": "1"}, {"key": "limit", "value": "3"}]}
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [{"key": "baseUrl", "value": "http://localhost:10000", "type": "string"}]
+}
