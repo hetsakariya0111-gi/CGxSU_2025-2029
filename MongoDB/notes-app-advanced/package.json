@@ -1,0 +1,18 @@
+{
+  "name": "notes-app-advanced",
+  "version": "1.0.0",
+  "description": "Notes App with Advanced Routing and Queries",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.5.0"
+  }
+}
