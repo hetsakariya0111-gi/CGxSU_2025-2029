@@ -1,6 +1,5 @@
 const Note = require("../models/note.model");
 
-
 exports.createNote = async (req, res) => {
   try {
     const { title, content, category, isPinned } = req.body;
@@ -13,7 +12,7 @@ exports.createNote = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.createBulkNotes = async (req, res) => {
   try {
     const { notes } = req.body;
@@ -26,7 +25,7 @@ exports.createBulkNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.getAllNotes = async (req, res) => {
   try {
     const notes = await Note.find();
@@ -35,7 +34,7 @@ exports.getAllNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.getNoteById = async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
@@ -46,7 +45,7 @@ exports.getNoteById = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.replaceNote = async (req, res) => {
   try {
     const note = await Note.findOneAndReplace({ _id: req.params.id }, req.body, { new: true, overwrite: true, runValidators: true });
@@ -57,7 +56,7 @@ exports.replaceNote = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.updateNote = async (req, res) => {
   try {
     if (Object.keys(req.body).length === 0) {
@@ -71,7 +70,7 @@ exports.updateNote = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.deleteNote = async (req, res) => {
   try {
     const note = await Note.findByIdAndDelete(req.params.id);
@@ -82,7 +81,7 @@ exports.deleteNote = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.deleteBulkNotes = async (req, res) => {
   try {
     const { ids } = req.body;
@@ -95,7 +94,7 @@ exports.deleteBulkNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.getNotesByCategory = async (req, res) => {
   try {
     const { category } = req.params;
@@ -110,7 +109,7 @@ exports.getNotesByCategory = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.getNotesByStatus = async (req, res) => {
   try {
     if (req.params.isPinned !== "true" && req.params.isPinned !== "false") {
@@ -123,7 +122,7 @@ exports.getNotesByStatus = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.getNoteSummary = async (req, res) => {
   try {
     const note = await Note.findById(req.params.id).select("title category isPinned createdAt");
@@ -134,7 +133,7 @@ exports.getNoteSummary = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.filterNotes = async (req, res) => {
   try {
     const filter = {};
@@ -147,7 +146,7 @@ exports.filterNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.getPinnedNotes = async (req, res) => {
   try {
     const filter = { isPinned: true };
@@ -159,7 +158,7 @@ exports.getPinnedNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.filterByCategory = async (req, res) => {
   try {
     if (!req.query.name) {
@@ -171,7 +170,7 @@ exports.filterByCategory = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.filterByDateRange = async (req, res) => {
   try {
     if (!req.query.from || !req.query.to) {
@@ -189,7 +188,7 @@ exports.filterByDateRange = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.paginateNotes = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -217,7 +216,7 @@ exports.paginateNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.paginateNotesByCategory = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -246,7 +245,7 @@ exports.paginateNotesByCategory = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.sortNotes = async (req, res) => {
   try {
     const allowed = ["title", "createdAt", "updatedAt", "category"];
@@ -268,7 +267,7 @@ exports.sortNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n
+
 exports.sortPinnedNotes = async (req, res) => {
   try {
     const allowed = ["title", "createdAt", "updatedAt", "category"];
@@ -290,4 +289,3 @@ exports.sortPinnedNotes = async (req, res) => {
     res.status(500).json({ success: false, message: err.message, data: null });
   }
 };
-\n

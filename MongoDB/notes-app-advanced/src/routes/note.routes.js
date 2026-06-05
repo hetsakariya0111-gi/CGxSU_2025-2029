@@ -16,9 +16,11 @@ router.get("/paginate", noteController.paginateNotes);
 router.get("/paginate/category/:category", noteController.paginateNotesByCategory);
 router.get("/sort", noteController.sortNotes);
 router.get("/sort/pinned", noteController.sortPinnedNotes);
-\nrouter.get("/:id", noteController.getNoteById);
+
+router.get("/:id", noteController.getNoteById);
 router.put("/:id", noteController.replaceNote);
 router.patch("/:id", noteController.updateNote);
 router.delete("/:id", noteController.deleteNote);
 router.get("/:id/summary", noteController.getNoteSummary);
-\nmodule.exports = router;
+
+module.exports = router;
